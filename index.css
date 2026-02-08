@@ -196,7 +196,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: var(--transition);
   text-align: center;
   justify-content: center;
-  white-space: nowrap;
 }
 
 .btn--primary {
@@ -2135,7 +2134,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .container {
-    padding: 0 18px;
+    padding: 0 20px;
   }
 
   /* Hero */
@@ -2145,27 +2144,44 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero__content {
-    padding: 90px 0 50px;
+    padding: 85px 0 50px;
+  }
+
+  .hero__title {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    margin-bottom: 16px;
   }
 
   .hero__badge {
-    font-size: 0.75rem;
-    padding: 6px 18px;
-    margin-bottom: 18px;
+    font-size: 0.72rem;
+    padding: 5px 16px;
+    margin-bottom: 14px;
   }
 
   .hero__subtitle {
     max-width: 100%;
-    margin-bottom: 32px;
-    line-height: 1.8;
+    margin-bottom: 28px;
+    line-height: 1.75;
+    font-size: 0.92rem;
+    padding: 0 4px;
   }
 
   .hero__actions {
-    gap: 12px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 16px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
 
   .hero__scroll {
-    bottom: 24px;
+    bottom: 20px;
   }
 
   /* Section headers */
@@ -2402,7 +2418,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobile Portrait - Small */
 @media (max-width: 575px) {
   :root {
-    --section-py: 48px;
+    --section-py: 44px;
   }
 
   html {
@@ -2410,16 +2426,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .container {
-    padding: 0 14px;
+    padding: 0 16px;
   }
 
   /* Header */
+  .header {
+    padding: 10px 0;
+  }
+
+  .header--scrolled {
+    padding: 8px 0;
+  }
+
   .header__logo img {
-    height: 48px;
+    height: 46px;
   }
 
   .header--scrolled .header__logo img {
-    height: 38px;
+    height: 36px;
   }
 
   .header__toggle span {
@@ -2427,32 +2451,47 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   /* Hero */
+  .hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
   .hero__content {
-    padding: 80px 0 40px;
+    padding: 75px 0 36px;
+  }
+
+  .hero__title {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    margin-bottom: 12px;
+    line-height: 1.25;
   }
 
   .hero__badge {
-    font-size: 0.7rem;
-    padding: 5px 14px;
-    margin-bottom: 14px;
+    font-size: 0.65rem;
+    padding: 4px 12px;
+    margin-bottom: 12px;
   }
 
   .hero__subtitle {
-    font-size: 0.9rem;
-    line-height: 1.8;
-    margin-bottom: 28px;
+    font-size: 0.82rem;
+    line-height: 1.75;
+    margin-bottom: 22px;
+    padding: 0 2px;
   }
 
   .hero__actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    padding: 0 10px;
+    gap: 8px;
+    padding: 0 12px;
   }
 
   .hero__actions .btn {
     width: 100%;
     justify-content: center;
+    padding: 11px 18px;
+    font-size: 0.85rem;
+    gap: 8px;
   }
 
   .hero__scroll {
@@ -2461,37 +2500,57 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Section headers */
   .section__header {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .section__badge {
-    font-size: 0.75rem;
-    padding: 5px 16px;
-    margin-bottom: 10px;
+    font-size: 0.72rem;
+    padding: 4px 14px;
+    margin-bottom: 8px;
+  }
+
+  .section__title {
+    font-size: 1.4rem;
   }
 
   .section__subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     line-height: 1.7;
   }
 
   /* About */
   .about__grid {
-    gap: 32px;
+    gap: 28px;
   }
 
   .about__image {
-    max-width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
   }
 
   .about__stats {
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .stat {
+    flex: 0 0 auto;
+  }
+
+  .stat__number {
+    font-size: 1.6rem;
+  }
+
+  .stat__label {
+    font-size: 0.75rem;
   }
 
   .about__text {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    line-height: 1.75;
   }
 
   /* Why us */
@@ -2807,7 +2866,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Extra Small Devices - 400px and below */
 @media (max-width: 400px) {
   :root {
-    --section-py: 40px;
+    --section-py: 36px;
   }
 
   html {
@@ -2815,15 +2874,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .container {
-    padding: 0 12px;
+    padding: 0 14px;
   }
 
   .header__logo img {
-    height: 42px;
+    height: 40px;
   }
 
   .header--scrolled .header__logo img {
-    height: 34px;
+    height: 32px;
   }
 
   .header__toggle {
@@ -2835,21 +2894,48 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero__content {
-    padding: 70px 0 32px;
+    padding: 65px 0 28px;
+  }
+
+  .hero__title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
   }
 
   .hero__badge {
-    font-size: 0.65rem;
-    padding: 4px 12px;
+    font-size: 0.6rem;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+
+  .hero__subtitle {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .hero__actions {
+    padding: 0 8px;
+    gap: 7px;
+  }
+
+  .hero__actions .btn {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
   }
 
   .section__header {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
   .section__badge {
-    font-size: 0.7rem;
-    padding: 4px 14px;
+    font-size: 0.65rem;
+    padding: 3px 12px;
+  }
+
+  .section__subtitle {
+    font-size: 0.82rem;
   }
 
   .about__stats {
@@ -2861,54 +2947,119 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .stat__label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+  }
+
+  .about__text {
+    font-size: 0.82rem;
+    line-height: 1.7;
   }
 
   .feature-card {
-    padding: 20px 14px;
-  }
-
-  .type-card {
-    padding: 20px 14px 18px;
-  }
-
-  .warranty__card {
-    padding: 24px 12px;
-  }
-
-  .warranty__icon {
-    width: 70px;
-    height: 70px;
-    font-size: 1.7rem;
-  }
-
-  .cta__card {
-    padding: 28px 14px;
-  }
-
-  .service-card {
     padding: 18px 14px;
   }
 
-  .faq__question {
-    padding: 14px 12px;
+  .type-card {
+    padding: 18px 14px 16px;
+  }
+
+  .type-card__number {
+    font-size: 1.8rem;
+  }
+
+  .type-card__title {
+    font-size: 0.92rem;
+  }
+
+  .type-card__text {
+    font-size: 0.78rem;
+  }
+
+  .type-card__features li {
+    font-size: 0.74rem;
+  }
+
+  .warranty__card {
+    padding: 22px 12px;
+  }
+
+  .warranty__icon {
+    width: 65px;
+    height: 65px;
+    font-size: 1.5rem;
+  }
+
+  .warranty__title {
+    font-size: 1.1rem;
+  }
+
+  .warranty__item h4 {
     font-size: 0.82rem;
+  }
+
+  .warranty__item p {
+    font-size: 0.76rem;
+  }
+
+  .cta__card {
+    padding: 24px 14px;
+  }
+
+  .cta__text {
+    font-size: 0.82rem;
+  }
+
+  .service-card {
+    padding: 16px 14px;
+  }
+
+  .service-card__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
+
+  .service-card__content h3 {
+    font-size: 0.88rem;
+  }
+
+  .service-card__content p {
+    font-size: 0.78rem;
+  }
+
+  .faq__question {
+    padding: 13px 12px;
+    font-size: 0.8rem;
   }
 
   .faq__answer p {
     padding: 0 12px 14px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .contact__card {
     flex-direction: column;
     text-align: center;
-    padding: 16px 12px;
-    gap: 10px;
+    padding: 14px 12px;
+    gap: 8px;
+  }
+
+  .contact__card-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .contact__card h4 {
+    font-size: 0.8rem;
+  }
+
+  .contact__card p {
+    font-size: 0.75rem;
   }
 
   .gallery__grid {
-    gap: 6px;
+    gap: 5px;
   }
 
   .gallery__item {
@@ -2916,29 +3067,94 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .map-section {
-    height: 200px;
+    height: 180px;
+  }
+
+  .social__title {
+    font-size: 1.1rem;
+  }
+
+  .social__text {
+    font-size: 0.78rem;
   }
 
   .social__link {
-    width: 38px;
-    height: 38px;
-    font-size: 0.9rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    padding: 36px 0 0;
+  }
+
+  .footer__grid {
+    gap: 20px;
+    padding-bottom: 28px;
+  }
+
+  .footer__logo img {
+    height: 40px;
+  }
+
+  .footer__col h4 {
+    font-size: 0.88rem;
+    margin-bottom: 10px;
+  }
+
+  .footer__about {
+    font-size: 0.76rem;
+  }
+
+  .footer__links a {
+    font-size: 0.76rem;
+  }
+
+  .footer__contact li {
+    font-size: 0.76rem;
+  }
+
+  .footer__social a {
+    width: 32px;
+    height: 32px;
+    font-size: 0.72rem;
+  }
+
+  .footer__bottom {
+    padding: 14px 0;
+    font-size: 0.7rem;
   }
 
   .whatsapp-float {
-    bottom: 12px;
-    left: 12px;
-    width: 46px;
-    height: 46px;
-    font-size: 1.3rem;
+    bottom: 10px;
+    left: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
   }
 
   .back-to-top {
-    bottom: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
+    bottom: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    font-size: 0.75rem;
+  }
+
+  .parallax-divider {
+    height: 100px;
+  }
+
+  /* Global buttons */
+  .btn {
+    padding: 10px 18px;
     font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .btn--lg {
+    padding: 11px 24px;
+    font-size: 0.85rem;
   }
 }
 
