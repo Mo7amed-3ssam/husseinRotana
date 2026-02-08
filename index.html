@@ -13,7 +13,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="حسين روتانا للمطابخ - مطابخ تركية وإيطالية حديثة" />
   <meta property="og:description" content="متخصصين بالمطابخ التركية والإيطالية الحديثة - ضمان 10 سنوات - كربلاء" />
-  <meta property="og:image" content="https://mo7amed-3ssam.github.io/husseinRotana/images/logo.jpeg" />
+  <meta property="og:image" content="images/logo.jpeg" />
   <meta property="og:type" content="website" />
 
   <!-- Favicon -->
@@ -69,6 +69,7 @@
         <span></span>
       </button>
     </div>
+    <div class="header__overlay" id="menuOverlay"></div>
   </header>
 
   <!-- ========== HERO ========== -->
@@ -695,19 +696,41 @@
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    let scrollPos = 0;
+    function openMenu() {
+      scrollPos = window.pageYOffset;
+      menuToggle.classList.add('active');
+      mainNav.classList.add('open');
+      menuOverlay.classList.add('active');
+      document.body.classList.add('no-scroll');
+      document.body.style.top = `-${scrollPos}px`;
+    }
+
+    function closeMenu() {
+      menuToggle.classList.remove('active');
+      mainNav.classList.remove('open');
+      menuOverlay.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollPos);
+    }
+
     menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      mainNav.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
+      if (mainNav.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
+
+    // Close menu on overlay tap
+    menuOverlay.addEventListener('click', closeMenu);
 
     // Close mobile menu on link click
     document.querySelectorAll('.header__link').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        mainNav.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-      });
+      link.addEventListener('click', closeMenu);
     });
 
     // Smooth scroll
