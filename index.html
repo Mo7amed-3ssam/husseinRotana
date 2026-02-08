@@ -27,6 +27,9 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="index.css" />
 
@@ -62,6 +65,17 @@
           <li><a href="#services" class="header__link">خدماتنا</a></li>
           <li><a href="#contact" class="header__link">تواصل وياناا</a></li>
         </ul>
+        <div class="header__social">
+          <a href="https://www.facebook.com/HuseinRotana" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/hussein_92g" target="_blank" aria-label="انستغرام"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@hussein_92g" target="_blank" aria-label="تيكتوك"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/+9647811888860" target="_blank" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <a href="https://acmecode-eg.com/" target="_blank" class="header__dev-badge" title="تم التطوير بواسطة AcmeCode">
+          <span class="header__dev-badge-icon">&lt;/&gt;</span>
+          <span class="header__dev-badge-text">AcmeCode</span>
+          <span class="header__dev-badge-pulse"></span>
+        </a>
       </nav>
       <button class="header__toggle" id="menuToggle" aria-label="القائمة">
         <span></span>
@@ -663,7 +677,10 @@
       </div>
       <div class="footer__bottom">
         <p>&copy; 2026 شركة حسين روتانا للمطابخ. جميع الحقوق محفوظة.</p>
-        <p>صمم بواسطة <a href="https://acmecode-eg.com/" target="_blank">أكمي كود</a></p>
+        <p class="footer__credit">
+          صُنع بكل <span class="footer__heart"><i class="fas fa-heart"></i></span> بواسطة
+          <a href="https://acmecode-eg.com/" target="_blank" class="footer__credit-link">AcmeCode</a>
+        </p>
       </div>
     </div>
   </footer>
@@ -800,6 +817,50 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     animatedElements.forEach(el => observer.observe(el));
+
+    // ========== WELCOME POPUP (SweetAlert2) ==========
+    setTimeout(() => {
+      Swal.fire({
+        html: `
+          <div class="swal-welcome">
+            <div class="swal-welcome__logo">
+              <img src="images/logo-removebg-preview.png" alt="حسين روتانا للمطابخ" />
+            </div>
+            <div class="swal-welcome__sparkle">✦</div>
+            <h2 class="swal-welcome__title">أهلاً وسهلاً بيك</h2>
+            <p class="swal-welcome__subtitle">في موقع <strong>حسين روتانا للمطابخ</strong></p>
+            <div class="swal-welcome__divider"></div>
+            <p class="swal-welcome__text">
+              أفضل شركة تصميم وتنفيذ مطابخ بالعراق
+              <br/>وبالأخص في كربلاء المقدسة
+            </p>
+            <p class="swal-welcome__subtext">خبرة أكثر من 15 سنة &bull; ضمان 10 سنوات</p>
+            <div class="swal-welcome__actions">
+              <a href="https://wa.me/+9647811888860" target="_blank" class="swal-welcome__whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                تواصل وياانا عالواتساب
+              </a>
+            </div>
+          </div>
+        `,
+        showConfirmButton: true,
+        confirmButtonText: '<i class="fas fa-home"></i> تصفح الموقع',
+        showCloseButton: true,
+        customClass: {
+          popup: 'swal-welcome-popup',
+          confirmButton: 'swal-welcome-confirm',
+          closeButton: 'swal-welcome-close'
+        },
+        background: 'transparent',
+        backdrop: `rgba(15, 15, 15, 0.85)`,
+        showClass: {
+          popup: 'swal-welcome-show'
+        },
+        hideClass: {
+          popup: 'swal-welcome-hide'
+        }
+      });
+    }, 5000);
   </script>
 </body>
 
